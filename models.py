@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 u"""Classes for extended Django user model."""
 
 from django.contrib.auth.models import AbstractBaseUser
@@ -40,6 +42,9 @@ class ExtUser(AbstractBaseUser, PermissionsMixin):
     Default ExtUser model for replacing default User model.
 
     You must make all changes, definition additional fields and other here.
+
+    !!! WARNING !!!
+    Field avatar require installed Pillow module!
     """
     email = models.EmailField(
         'Email',
@@ -109,8 +114,10 @@ class ExtUser(AbstractBaseUser, PermissionsMixin):
     # Field, used as 'username' in authentication and orher forms
     USERNAME_FIELD = 'email'
 
-    """Username required by default. Add here another fields, where
-    must be defined for correct model creation."""
+    """
+    Username required by default. Add here another fields, where
+    must be defined for correct model creation.
+    """
     REQUIRED_FIELDS = []
 
     # Link model and model manager

@@ -1,15 +1,20 @@
+# -*- coding: utf-8 -*-
+
 u"""Forms for creating and updating user data."""
+
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 
 class UserCreationForm(forms.ModelForm):
+
     u"""
     Form for creation new user.
 
     If passwords is equal, create new record, else throw error.
     """
+
     password1 = forms.CharField(
         label='Password',
         widget=forms.PasswordInput
@@ -44,10 +49,12 @@ class UserCreationForm(forms.ModelForm):
 
 class UserChangeForm(forms.ModelForm):
 
-    u'''
-    Form for updating user data. If password is defined in data, call default
-    Django function for setting him.
-    '''
+    u"""
+    Form for updating user data.
+
+    If password is defined in data, call default Django function for setting
+    him.
+    """
     password = ReadOnlyPasswordHashField(
         widget=forms.PasswordInput,
         required=False
